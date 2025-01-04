@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT 服务套餐</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- 引入 Font Awesome 图标库 -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-top: 30px;
+        }
+
+        p {
+            font-size: 18px;
+            color: gray;
+            margin: 10px 0 30px;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin: 30px 0;
+            cursor: pointer;
+            color: #333;
+            display: inline-block;
+            margin-right: 20px;
+
+             
+        }
+
+     .highlight0{
+        color: black;
+            font-weight: bold;
+     }
+
+        .button-container {
+            display: inline-block;
+        }
+
+        .buttontaocan, .button-container .button {
+            margin-left: 10px;
+            background-color: #32CD32;
+            color: white;
+            padding: 12px 30px;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .buttontaocan:hover{
+            background-color: #32CD32;
+        }
+
+       .button-container .button:hover {
+            background-color: #32CD32;
+        }
+
+      
+          /* 按钮点击后变为灰色 */
+    .button.gray, .buttontaocan.gray {
+      background-color: #D3D3D3; /* 灰色 */
+    }
+
+        .table-container {
+            display: grid;
+            grid-template-columns: 1fr repeat(4, 1fr);
+            gap: 10px;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            align-items: center;
+        }
+
+        .table-container div {
+            padding: 10px 0;
+            font-size: 18px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+  /* 给第一列单元格设置灰色背景 */
+    .table-container div:nth-child(5n-4) {
+        background-color: #f0f0f0; /* 灰色背景 */
+        font-weight: bold; /* 可选，增加文字的加粗效果 */
+    }
+     /* 给前5个单元格文字加粗 */
+    .table-container div:nth-child(-n+5) {
+        font-weight: bold; /* 加粗文字 */
+    }
+        .radio-container {
+            display: grid;
+            grid-template-columns: 1fr repeat(4, 1fr);
+            gap: 10px;
+            max-width: 700px;
+            margin: 20px auto;
+            text-align: center;
+            align-items: center;
+        }
+
+        .radio-container div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .radio-container input {
+            margin: 0;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 30px;
+            background-color: #87CEFA;
+            color: white;
+            padding: 12px 30px;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #4682B4;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #purchase-content img {
+            max-width: 60% ;
+            height: auto;
+            margin-top: 20px;
+        }
+
+        .highlight {
+            color: red;
+            font-weight: bold;
+            font-size: 22px;
+        }
+
+        /* 新增密码输入框的样式 */
+        .password-container {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .password-container input {
+            padding: 8px;
+            font-size: 18px;
+            width: 250px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .show-password-icon {
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+     
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            p, .table-container div {
+                font-size: 16px;
+            }
+
+            .button {
+                font-size: 18px;
+                padding: 10px 20px;
+            }
+
+        
+        }
+    </style>
+</head>
+<body>
+    <h1>IT 服务</h1>
+    <p>包括硬件、软件、网络等方面的技术服务</p>
+    
+    <div>
+        
+        <button class="buttontaocan" onclick="showPackageSection();toggleButtonColor('taocan');">套&nbsp;&nbsp;餐</button>
+        <div class="button-container">
+            <button class="button" onclick="showPurchased();toggleButtonColor('purchased');">已购买</button>
+        </div>
+    </div>
+
+    <!-- 套餐部分 -->
+    <div id="package-section">
+        <br/>
+        <div class="table-container">
+            <div>人民币/年</div>
+            <div>85元/年</div>
+            <div>58元/年</div>
+            <div>39元/年</div>
+            <div>-</div>
+
+            <div>服务时长</div>
+            <div>2年</div>
+            <div>5年</div>
+            <div>10年</div>
+            <div>永久终身</div>
+
+            <div>需付款合计<br>(人民币)</div>
+            <div>169元</div>
+            <div>289元</div>
+            <div>389元</div>
+            <div>1200元</div>
+        </div>
+
+        <div class="radio-container">
+            <div></div> <!-- 第1列为空，用于对齐 -->
+            <div><input type="radio" name="package" value="169元"></div>
+            <div><input type="radio" name="package" value="289元"></div>
+            <div><input type="radio" name="package" value="389元"></div>
+            <div><input type="radio" name="package" value="1200元"></div>
+        </div>
+        <button class="button" onclick="validateAndShowPurchaseContent()">购买</button>
+    </div>
+
+    <!-- 购买后显示的内容 -->
+    <div id="purchase-content" class="hidden">
+        <h2>获取</h2>
+        <p id="payment-instruction">
+            请使用“微信”或“支付宝”扫码支付：<span id="payment-amount" class="highlight">389元</span>
+        </p>
+
+        <p>请不要备注敏感词，可备注您的邮箱。<span class="highlight0">付款后请点击上面的“已购买”按键</span></p>
+         <img class="zanzhu" src="zanzhu.png" alt="支付二维码">
+        <p>联系邮箱：<a href="mailto:aifenxiang19@gmail.com">aifenxiang19@gmail.com</a></p>
+       
+       
+    </div>
+
+    <!-- 新增密码输入框和提交按钮，点击“已购买”按钮后显示 -->
+    <div id="password-container" class="hidden">
+         <h3 id="payment-number-label" class="hidden">24小时内更新,请输入支付单号获取：</h3>
+         <P>如果您在购买时备注了邮箱，则会在24小时内同时发送到您的邮箱中.</p>
+        <input type="password" id="password" placeholder="请输入单号" />
+        <span class="show-password-icon" onclick="togglePassword()">
+            <i class="fas fa-eye"></i>
+        </span>
+        <br/>
+
+        <button class="button hidden" id="submit-btn" onclick="decryptData()">提交</button>
+
+        <!-- 显示结果 -->
+        <div id="result"></div>
+    </div>
+
+ <!-- 正确加载 JS  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+    <script>
+        let encryptedDataList = []; // 存储 数据
+
+        // 自动加载文件
+        fetch('mh.csv')
+            .then(response => response.text())
+            .then(data => {
+                encryptedDataList = data.split('\n').filter(row => row.trim() !== ''); 
+            })
+            .catch(error => console.error('加载文件失败:', error));
+
+        // 解密数据
+        function decryptData() {
+            const password = document.getElementById('password').value;
+
+            if (!password) {
+                alert('请输入信息');
+                return;
+            }
+
+            // 清空结果显示
+            document.getElementById('result').textContent = '';
+
+            for (let i = 0; i < encryptedDataList.length; i++) {
+                const encryptedData = encryptedDataList[i];
+
+                try {
+                    const bytes = CryptoJS.AES.decrypt(encryptedData, password);
+                    const decryptedData = bytes.toString(CryptoJS.enc.Utf8);
+
+                    if (decryptedData) {
+                        const decryptedJson = JSON.parse(decryptedData);
+                        const base64Content = decryptedJson.base64Content;
+                        const mimeType = decryptedJson.mimeType || 'text/plain';
+
+                        const decodedData = atob(base64Content);
+
+                        document.getElementById('result').innerHTML = '感谢您的支持' + '<span>&#8595;</span>\n\n' + decodedData;
+                        return;
+                    }
+                } catch (err) {
+                    // 忽略错误，继续尝试下一个
+                }
+            }
+
+            document.getElementById('result').textContent = '解密失败：请检查输入是否正确，或请耐心等待数据更新（24h内更新）。';
+        }
+
+        function validateAndShowPurchaseContent() {
+            // 获取选择的套餐
+            const selectedPackage = document.querySelector('input[name="package"]:checked');
+
+            if (!selectedPackage) {
+                // 未选择任何套餐时，弹出提示
+                alert("请选择套餐");
+                return;
+            }
+
+            // 获取选择的套餐价格
+            const selectedPrice = selectedPackage.value;
+
+            // 更新支付提示中的价格
+            document.getElementById("payment-amount").textContent = selectedPrice;
+
+            // 隐藏套餐部分
+            document.getElementById("package-section").classList.add("hidden");
+            // 显示购买内容
+            document.getElementById("purchase-content").classList.remove("hidden");
+
+             // 隐藏密码输入框和提交按钮
+            document.getElementById("password-container").classList.add("hidden");
+            document.getElementById("submit-btn").classList.add("hidden");
+
+            // 隐藏支付单号提示文本
+            document.getElementById("payment-number-label").classList.add("hidden");
+
+        }
+
+        function showPackageSection() {
+            // 隐藏购买内容
+            document.getElementById("purchase-content").classList.add("hidden");
+            // 隐藏密码输入框和提交按钮
+            document.getElementById("password-container").classList.add("hidden");
+            // 隐藏支付单号提示文本
+            document.getElementById("payment-number-label").classList.add("hidden");
+            // 显示套餐部分
+            document.getElementById("package-section").classList.remove("hidden");
+        }
+
+        function showPurchased() {
+
+            // 隐藏套餐部分和购买内容，显示已购买提示
+            document.getElementById("package-section").classList.add("hidden");
+            document.getElementById("purchase-content").classList.add("hidden");
+        
+            
+            // 显示密码输入框和提交按钮
+            document.getElementById("password-container").classList.remove("hidden");
+            document.getElementById("submit-btn").classList.remove("hidden");
+
+            // 显示支付单号提示文本
+            document.getElementById("payment-number-label").classList.remove("hidden");
+        }
+
+        // 处理按钮点击后的颜色切换
+    function toggleButtonColor(clickedButton) {
+      const taocanButton = document.querySelector('.buttontaocan');
+      const purchasedButton = document.querySelector('.button');
+
+      if (clickedButton === 'taocan') {
+        // 点击了“套餐”按钮，套餐变绿色，已购买变灰色
+        taocanButton.classList.remove('gray');
+        purchasedButton.classList.add('gray');
+      } else if (clickedButton === 'purchased') {
+        // 点击了“已购买”按钮，已购买变绿色，套餐变灰色
+        purchasedButton.classList.remove('gray');
+        taocanButton.classList.add('gray');
+      }
+    }
+
+
+        // 切换密码显示/隐藏
+        function togglePassword() {
+            const passwordField = document.getElementById('password');
+            const passwordType = passwordField.type === 'password' ? 'text' : 'password';
+            passwordField.type = passwordType;
+
+            // 切换图标
+            const icon = document.querySelector('.show-password-icon i');
+            if (passwordField.type === 'password') {
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            } else {
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            }
+        }
+
+        
+
+    </script>
+</body>
+</html>
