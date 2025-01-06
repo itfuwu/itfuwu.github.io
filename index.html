@@ -31,19 +31,18 @@
             color: #333;
             display: inline-block;
             margin-right: 20px;
-
-             
         }
 
-     .highlight0{
-        color: black;
-            font-weight: bold;
-     }
+     
+         .highlight0{
+            color: black;
+                font-weight: bold;
+         }
 
-         .highlight1{
-        color: green;
-            font-weight: bold;
-     }
+             .highlight1{
+            color: green;
+                font-weight: bold;
+         }
 
         .button-container {
             display: inline-block;
@@ -70,9 +69,9 @@
 
       
           /* 按钮点击后变为灰色 */
-    .button.gray, .buttontaocan.gray {
-      background-color: #D3D3D3; /* 灰色 */
-    }
+        .button.gray, .buttontaocan.gray {
+          background-color: #D3D3D3; /* 灰色 */
+        }
 
         .table-container {
             display: grid;
@@ -92,16 +91,16 @@
             justify-content: center;
             align-items: center;
         }
-  /* 给第一列单元格设置灰色背景 */
-    .table-container div:nth-child(5n-4) {
-        background-color: #f0f0f0; /* 灰色背景 */
-        font-weight: bold; /* 可选，增加文字的加粗效果 */
-    }
-     /* 给前5个单元格文字加粗 */
-    .table-container div:nth-child(-n+5) {
-        font-weight: bold; /* 加粗文字 */
-    }
-        .radio-container {
+          /* 给第一列单元格设置灰色背景 */
+        .table-container div:nth-child(5n-4) {
+            background-color: #f0f0f0; /* 灰色背景 */
+            font-weight: bold; /* 可选，增加文字的加粗效果 */
+        }
+         /* 给前5个单元格文字加粗 */
+        .table-container div:nth-child(-n+5) {
+            font-weight: bold; /* 加粗文字 */
+        }
+            .radio-container {
             display: grid;
             grid-template-columns: 1fr repeat(4, 1fr);
             gap: 10px;
@@ -152,7 +151,28 @@
         .highlight {
             color: red;
             font-weight: bold;
-            font-size: 22px;
+            font-size: 26px;
+        }
+
+        #password {
+            width: 300px; /* 设置宽度 */
+            padding: 10px; /* 设置内边距 */
+            font-size: 16px; /* 设置字体大小 */
+            border: 1px solid #ccc; /* 设置边框 */
+            border-radius: 5px; /* 设置圆角 */
+            box-sizing: border-box; /* 包含边框和内边距的宽度 */
+            outline: none; /* 去除默认的聚焦边框 */
+            transition: border-color 0.3s ease; /* 添加过渡效果 */
+        }
+
+        #password:focus {
+            border-color: #007bff; /* 聚焦时改变边框颜色 */
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.2); /* 添加阴影效果 */
+        }
+
+        #password::placeholder { /* 修改 placeholder 文本样式 */
+            color: #aaa;
+            font-style: italic;
         }
 
         /* 新增密码输入框的样式 */
@@ -177,8 +197,6 @@
             font-size: 18px;
         }
 
-     
-
         /* 响应式设计 */
         @media (max-width: 768px) {
             h1 {
@@ -197,20 +215,24 @@
                 font-size: 18px;
                 padding: 10px 20px;
             }
-
         
         }
     </style>
 </head>
 <body>
-    <h1>IT 服务</h1>
-    <p>包括硬件、软件、网络等方面的技术服务</p>
+    <div id="lang-selector">
+        <button onclick="changeLanguage('zh-CN')" id="zh-CN-btn" class="lang-btn active">中文</button>
+        <button onclick="changeLanguage('en')" id="en-btn" class="lang-btn">English</button>
+    </div>
+
+    <h1 data-lang="title">IT 服务</h1>
+    <p data-lang="subtitle">包括硬件、软件、网络等方面的技术服务</p>
     
     <div>
         
-        <button class="buttontaocan" onclick="showPackageSection();toggleButtonColor('taocan');">套&nbsp;&nbsp;餐</button>
+        <button class="buttontaocan" onclick="showPackageSection();toggleButtonColor('taocan');" data-lang="package_btn">套&nbsp;&nbsp;餐</button>
         <div class="button-container">
-            <button class="button" onclick="showPurchased();toggleButtonColor('purchased');">已购买</button>
+            <button class="button" onclick="showPurchased();toggleButtonColor('purchased');" data-lang="purchased_btn">已购买</button>
         </div>
     </div>
 
@@ -218,60 +240,61 @@
     <div id="package-section">
         <br/>
         <div class="table-container">
-            <div>人民币/年</div>
-            <div>85元/年</div>
-            <div>58元/年</div>
-            <div>39元/年</div>
+            <div data-lang="price_unit">人民币/年</div>
+            <div data-lang="pa">85元/年</div>
+            <div data-lang="pb">58元/年</div>
+            <div data-lang="pc">39元/年</div>
             <div>-</div>
 
-            <div>服务时长</div>
-            <div>2年</div>
-            <div>5年</div>
-            <div>10年</div>
-            <div>永久终身</div>
+            <div data-lang="service_duration">服务时长</div>
+            <div data-lang="pd">2年</div>
+            <div data-lang="pe">5年</div>
+            <div data-lang="pf">10年</div>
+            <div data-lang="pg">永久终身</div>
 
-            <div>需付款合计<br>(人民币)</div>
-            <div>169元</div>
-            <div>289元</div>
-            <div>389元</div>
-            <div>1200元</div>
+            <div data-lang="total_payment">需付款合计<br>(人民币)</div>
+            <div data-lang="ph">169元</div>
+            <div data-lang="pi">289元</div>
+            <div data-lang="pj">389元</div>
+            <div data-lang="pk">1200元</div>
         </div>
 
         <div class="radio-container">
             <div></div> <!-- 第1列为空，用于对齐 -->
-            <div><input type="radio" name="package" value="169元"></div>
-            <div><input type="radio" name="package" value="289元"></div>
-            <div><input type="radio" name="package" value="389元"></div>
-            <div><input type="radio" name="package" value="1200元"></div>
+            <div><input type="radio" name="package" value="169"></div>
+            <div><input type="radio" name="package" value="289"></div>
+            <div><input type="radio" name="package" value="389"></div>
+            <div><input type="radio" name="package" value="1200"></div>
         </div>
-        <button class="button" onclick="validateAndShowPurchaseContent()">购买</button>
+        <button class="button" onclick="validateAndShowPurchaseContent()" data-lang="buy_btn">购买</button>
     </div>
 
     <!-- 购买后显示的内容 -->
     <div id="purchase-content" class="hidden">
-        <h2>获取</h2>
-        <p id="payment-instruction">
-            请使用“微信”或“支付宝”扫码支付：<span id="payment-amount" class="highlight">389元</span>
+        <h2 data-lang="get_title">获取</h2>
+        <p id="payment-instruction" data-lang="payment_instruction">
+            请使用“微信”或“支付宝”扫码支付（人民币）：
         </p>
+        <span id="payment-amount" class="highlight">389元</span>
 
-        <p>请 <span class="highlight0">不要</span>备注 <span class="highlight0">敏感词</span>，<span class="highlight1">请备注随意密码或个人邮箱。</span><br/> <span class="highlight0">付款后请点击上面的“已购买”按键</span></p>
+        <p data-lang="payment_notes">请 <span class="highlight0">不要</span>备注 <span class="highlight0">敏感词</span>，<span class="highlight1">请备注随意密码或个人邮箱。</span><br/> <span class="highlight0">付款后请点击上面的“已购买”按键</span></p>
          <img class="zanzhu" src="zanzhu.png" alt="支付二维码">
-        <p>联系邮箱：<a href="mailto:aifenxiang19@gmail.com">aifenxiang19@gmail.com</a></p>
+        <p data-lang="contact_email">联系邮箱：</p><a href="mailto:aifenxiang19@gmail.com">aifenxiang19@gmail.com</a>
        
        
     </div>
 
     <!-- 新增密码输入框和提交按钮，点击“已购买”按钮后显示 -->
     <div id="password-container" class="hidden">
-         <h3 id="payment-number-label" class="hidden">24小时内更新,请输入您备注的密码或邮箱获取：</h3>
-         <P>如果您在购买时备注了邮箱，则会在24小时内同时发送到您的邮箱中.</p>
-        <input type="password" id="password" placeholder="请输入您备注的密码或邮箱" />
+         <h3 id="payment-number-label" class="hidden" data-lang="input_password_label">24小时内更新,请输入您备注的密码或邮箱获取：</h3>
+         <P data-lang="email_info">如果您在购买时备注了邮箱，则会在24小时内同时发送到您的邮箱中.</p>
+        <input type="password" id="password" placeholder="请输入您备注的密码或邮箱" data-lang="password_placeholder"/>
         <span class="show-password-icon" onclick="togglePassword()">
             <i class="fas fa-eye"></i>
         </span>
         <br/>
 
-        <button class="button hidden" id="submit-btn" onclick="decryptData()">提交</button>
+        <button class="button hidden" id="submit-btn" onclick="decryptData()" data-lang="submit_btn">提交</button>
 
         <!-- 显示结果 -->
         <div id="result"></div>
@@ -338,11 +361,12 @@
                 return;
             }
 
-            // 获取选择的套餐价格
+          
+  // 获取选择的套餐价格
             const selectedPrice = selectedPackage.value;
-
             // 更新支付提示中的价格
             document.getElementById("payment-amount").textContent = selectedPrice;
+            
 
             // 隐藏套餐部分
             document.getElementById("package-section").classList.add("hidden");
@@ -355,6 +379,8 @@
 
             // 隐藏支付单号提示文本
             document.getElementById("payment-number-label").classList.add("hidden");
+
+            
 
         }
 
@@ -419,6 +445,88 @@
         }
 
         
+const translations = {
+            'zh-CN': {
+                'title': 'IT 服务',
+                'subtitle': '包括硬件、软件、网络等方面的技术服务',
+                'package_btn': '套&nbsp;&nbsp;&nbsp;餐',
+                'purchased_btn': '已购买',
+                'price_unit': '人民币/年',
+                'service_duration': '服务时长',
+                'total_payment': '需付款合计<br>(人民币)',
+                'buy_btn': '购买',
+                'get_title': '付款',
+                'payment_instruction': '请使用“微信”或“支付宝”扫码支付（人民币）：',
+                'payment_notes': '请 <span class="highlight0">不要</span>备注 <span class="highlight0">敏感词</span>，<span class="highlight1">请备注随意密码或个人邮箱。</span><br/> <span class="highlight0">付款后请点击上面的“已购买”按键</span>',
+                'contact_email': '联系邮箱：',
+                'input_password_label': '24小时内更新,请输入您备注的密码或邮箱获取：',
+                'email_info': '如果您在购买时备注了邮箱，则会在24小时内同时发送到您的邮箱中.',
+                'password_placeholder': '请输入您备注的密码或邮箱',
+                'submit_btn': '提交',
+                'pa': '85元/年',
+                'pb': '58元/年',
+                'pc': '39元/年',
+                'pd': '2年',
+                'pe': '5年',
+                'pf': '10年',
+                'pg': '永久终身',
+                'ph': '169元',
+                'pi': '289元',
+                'pj': '389元',
+                'pk': '1200元'
+
+            },
+            'en': {
+                'title': 'IT Services',
+                'subtitle': 'Technical services including hardware, software, and network aspects',
+                'package_btn': 'Packages',
+                'purchased_btn': 'Purchased',
+                'price_unit': 'CNY/Year',
+                'service_duration': 'Service Duration',
+                'total_payment': 'Total Payment<br>(CNY)',
+                'buy_btn': 'Buy',
+                'get_title': 'Pay',
+                'payment_instruction': 'Please use WeChat or Alipay to scan the QR code to pay (CNY):',
+                'payment_notes': 'Please <span class="highlight0">do not</span> note <span class="highlight0">sensitive words</span>, <span class="highlight1">please note a random password or personal email.</span><br/> <span class="highlight0">After payment, please click the "Purchased" button above</span>',
+                'contact_email': 'Contact Email:',
+                'input_password_label': 'Updated within 24 hours, please enter the password or email you noted to get it:',
+                'email_info': 'If you noted your email when purchasing, it will also be sent to your email within 24 hours.',
+                'password_placeholder': 'Please enter the password or email you noted',
+                'submit_btn': 'Submit',
+                'pa': '85',
+                'pb': '58',
+                'pc': '39',
+                'pd': '2 Year',
+                'pe': '5 Year',
+                'pf': '10 Year',
+                'pg': 'Permanent',
+                'ph': '169 CNY',
+                'pi': '289 CNY',
+                'pj': '389 CNY',
+                'pk': '1200 CNY'
+            }
+        };
+
+        function changeLanguage(lang) {
+            document.documentElement.lang = lang;
+            const elements = document.querySelectorAll('[data-lang]');
+            elements.forEach(element => {
+                const key = element.dataset.lang;
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                    if(element.tagName==='INPUT'){
+                        element.placeholder=translations[lang][key];
+                    }
+                }
+            });
+
+        //更新按钮样式
+            const langButtons = document.querySelectorAll('.lang-btn');
+            langButtons.forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`${lang}-btn`).classList.add('active');
+
+        }
+        changeLanguage('zh-CN');
 
     </script>
 </body>
